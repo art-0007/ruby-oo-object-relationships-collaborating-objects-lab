@@ -1,3 +1,4 @@
+#require 'pry'
 describe 'Song' do
   
   before(:example) {
@@ -36,10 +37,13 @@ describe 'Song' do
       expect(Song.all).to eq([song, purple_rain])
     end
   end
-
+ 
   describe '.new_by_filename' do
+    #binding.pry
     it 'creates a new instance of a song from the file that\'s passed' do
+      #binding.pry
       file_name = 'Michael Jackson - Black or White - pop.mp3'
+      
       new_instance = Song.new_by_filename(file_name)
       expect(new_instance.name).to eq('Black or White')
     end

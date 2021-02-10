@@ -6,16 +6,17 @@ class Artist
 
 def initialize(name)
     @name = name
-    save
+    @@all << self
+    #save
 end
 
 def self.all
     @@all   
 end
 
-def save
-    self.class.all << self
-end
+#def save
+    #self.class.all << self
+#end
 
 def add_song(song)
     song.artist = self   
@@ -27,7 +28,7 @@ end
 
 def self.create_by_name(name)
     artist = Artist.new(name)
-    artist.save
+    #artist.save
     artist
 end
 
@@ -35,13 +36,13 @@ end
 def self.find_or_create_by_name(name)
 artist_name = @@all.detect{|el| el.name == name}
    if artist_name == nil
-       self.create_by_name(name)
+    self.create_by_name(name) 
     else
          artist_name
    end
       
 end
-#binding.pry
+
 
 def print_songs
     self.songs.each {|song| puts "#{song.name}\n"}
